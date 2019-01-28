@@ -22,6 +22,7 @@ if all goes well you can move down to the next section.
 
 
 ## how to work with docker:
+0) Clone this repo on your local machine using ''git clone https://github.com/Cool-Coderz/cryo1.git ''
 1) navigate to your local copy of https://github.com/Cool-Coderz/cryo1/build/docker/images/base_image
 2) run the download_files.sh file only once.  this will download the centos7 epel-release.. which is some irritating update that it needs.
  - run the file like this: "$ ./download_files.sh"
