@@ -27,8 +27,15 @@ if all goes well you can move down to the next section.
  - run the file like this: "$ ./download_files.sh"
 3) once those are done... you can simply run the next script: "$ ./rebuild_image.sh" .  this initial build will take probably a good 15 minutes to run.
 4) check to see if the image has been built: "$ docker image ls"
+5) now navigate to your local repo: Cool-Coderz/cryo1/build/docker/images/mod_image
+6) now build this image: "$ ./rebuild_image.sh"  this will extend the first image you created (like extending a class)... so it will only build what it needs on top of it.
+7) you can run "$ docker image ls" again now and you should see at least one more image in the list now.
+8) next lets actually run the latest image as a container: "$ ./run_container.sh"
+9) take a look at the status or your shiny new container: "$ docker ps -a"
+10)  you can now jump into the container: "$ ./interactive_run_container.sh" .  this will connects you, like ssh, into the container.  now you can do any updates you want to perform.. for testing things.
+11) you can now stop and remove this container and related images if you wish.
 
-So, now you will be stuck with an image that you can't use at the moment... but if you got to this point... your doing great.  remember this is just the main building block for any changes we make later on.  you should never need to do this part again, unless we change to a different version of some package or OS at this level.
+If you can get to this point, you are doing great! and at a really happy place.  this means that we can push new docker files and you can run it right away and test new changes to the build.
 
 
 ## Docker terminology and descriptions:
