@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME="cent76_conda3"
-CONTAINER_NAME="cent7_cnda3"
+IMAGE_NAME="cent76_conda3_mod_run"
+CONTAINER_NAME="cc_mod"
 
 # remove previous containers first
 echo "docker ps -a | grep $CONTAINER_NAME"
@@ -24,4 +24,3 @@ fi
 
 
 docker build --tag $IMAGE_NAME .
-
