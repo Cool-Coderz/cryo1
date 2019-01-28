@@ -22,18 +22,18 @@ if all goes well you can move down to the next section.
 
 
 ## how to work with docker:
-0) Clone this repo on your local machine using ''git clone https://github.com/Cool-Coderz/cryo1.git ''
+0) Clone this repo on your local machine using ```$ git clone https://github.com/Cool-Coderz/cryo1.git ```
 1) navigate to your local copy of https://github.com/Cool-Coderz/cryo1/build/docker/images/base_image
 2) run the download_files.sh file only once.  this will download the centos7 epel-release.. which is some irritating update that it needs.
- - run the file like this: "$ ./download_files.sh"
-3) once those are done... you can simply run the next script: "$ ./rebuild_image.sh" .  this initial build will take probably a good 15 minutes to run.
-4) check to see if the image has been built: "$ docker image ls"
+ - run the file with this command ```$ ./download_files.sh```
+3) once those are done... you can simply run the next script: ```$ ./rebuild_image.sh```   this initial build will take probably a good 15 minutes to run.
+4) check to see if the image has been built: ```$ docker image ls```
 5) now navigate to your local repo: Cool-Coderz/cryo1/build/docker/images/mod_image
-6) now build this image: "$ ./rebuild_image.sh"  this will extend the first image you created (like extending a class)... so it will only build what it needs on top of it.
-7) you can run "$ docker image ls" again now and you should see at least one more image in the list now.
-8) next lets actually run the latest image as a container: "$ ./run_container.sh"
-9) take a look at the status or your shiny new container: "$ docker ps -a"
-10)  you can now jump into the container: "$ ./interactive_run_container.sh" .  this will connects you, like ssh, into the container.  now you can do any updates you want to perform.. for testing things.
+6) now build this image: ```$ ./rebuild_image.sh``` this will extend the first image you created (like extending a class)... so it will only build what it needs on top of it.
+7) you can run ```$ docker image ls``` again now and you should see at least one more image in the list now.
+8) next lets actually run the latest image as a container: ```$ ./run_container.sh```
+9) take a look at the status or your shiny new container: ```$ docker ps -a```
+10)  you can now jump into the container: ```$ ./interactive_run_container.sh```   this will connect you, like ssh, into the container.  now you can do any updates you want to perform.. for testing things.
 11) you can now stop and remove this container and related images if you wish.
 
 If you can get to this point, you are doing great! and at a really happy place.  this means that we can push new docker files and you can run it right away and test new changes to the build.
@@ -58,28 +58,28 @@ Terms:
 ## Docker Commands:
 
 // to query all docker images:
-$ docker images ls -a
+```$ docker images ls -a```
 
 // query all dicker containers:
-$ docker ps -a
+```$ docker ps -a```
 
 //copy files to/from the running container:
 example: docker cp <file> <container_id>:<location>
-$ docker cp threshold_testing.py $(docker ps -a -q):/opt
-$ docker cp $(docker ps -a -q):/opt .
+```$ docker cp threshold_testing.py $(docker ps -a -q):/opt```
+```$ docker cp $(docker ps -a -q):/opt .```
 
 // stop a container:
-$ docker stop <container_id>
+```$ docker stop <container_id>```
 
 // start a container.  If you needed to restart your computer.  you can use this command to get your container back up and running:
-$ docker start <container_id>
+```$ docker start <container_id>```
 
 // interact with the container/ like ssh'ing inside it:
-$ docker exec -ti <container_id> bash
+```$ docker exec -ti <container_id> bash```
 
 // delete/remove a container:
-$ docker rm <container_id>
+```$ docker rm <container_id>```
 
 // remove image:
-$ docker rmi <image_id>
+```$ docker rmi <image_id>```
 
