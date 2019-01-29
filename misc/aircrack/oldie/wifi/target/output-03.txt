@@ -1,0 +1,7 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+00:09:5B:99:C4:F4, 2008-08-28 22:46:34, 2008-08-28 22:50:50,  6,  54, WEP , WEP,   , 183,     2198,     1766,   0.  0.  0.  0,   7, NETGEAR, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+00:1F:E1:48:13:43, 2008-08-28 22:46:34, 2008-08-28 22:50:50,  -1,     2821, 00:09:5B:99:C4:F4,
+

@@ -1,0 +1,6 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+00:1B:2F:D4:3E:50, 2008-08-28 22:52:31, 2008-08-28 22:53:10,  1,  54, WEP , WEP,   , 174,       84,        1,   0.  0.  0.  0,   6, michel, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+
