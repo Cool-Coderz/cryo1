@@ -1,0 +1,301 @@
+#!/bin/bash
+ifconfig eth0 down
+ifconfig eth1 down
+rmmod ipw2200
+modprobe ipw2200
+ifconfig eth1 up
+iwconfig eth1 essid NETGEAR channel 11
+dhcpcd eth1
+eth1      Scan completed :
+          Cell 01 - Address: 00:0A:95:F4:0A:3C
+                    ESSID:"RSAFILMS1"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:1
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=41/100  Signal level=-76 dBm  
+                    Extra: Last beacon: 89ms ago
+          Cell 02 - Address: 00:14:51:6E:05:3F
+                    ESSID:"Euphoria"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:6
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=37/100  Signal level=-78 dBm  
+                    Extra: Last beacon: 318ms ago
+          Cell 03 - Address: 00:11:95:41:1F:8B
+                    ESSID:"GMR"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:6
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 9 Mb/s; 11 Mb/s
+                              6 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=77/100  Signal level=-52 dBm  
+                    Extra: Last beacon: 305ms ago
+          Cell 04 - Address: 00:0F:66:22:98:87
+                    ESSID:"JKD"
+                    Protocol:IEEE 802.11b
+                    Mode:Master
+                    Channel:6
+                    Encryption key:off
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s
+                    Quality=59/100  Signal level=-65 dBm  
+                    Extra: Last beacon: 332ms ago
+          Cell 05 - Address: 00:09:5B:AD:D2:3C
+                    ESSID:"modcon"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:11
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=70/100  Signal level=-58 dBm  
+                    Extra: Last beacon: 190ms ago
+          Cell 06 - Address: 00:12:17:FA:53:5B
+                    ESSID:"ASIAPAC"
+                    Protocol:IEEE 802.11g
+                    Mode:Master
+                    Channel:10
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=58/100  Signal level=-66 dBm  
+                    Extra: Last beacon: 121ms ago
+          Cell 07 - Address: 00:0D:93:82:AA:79
+                    ESSID:"brock"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:10
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=39/100  Signal level=-77 dBm  
+                    Extra: Last beacon: 229ms ago
+          Cell 08 - Address: 00:0F:66:18:B2:4D
+                    ESSID:"fuzzylogic"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:11
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=48/100  Signal level=-72 dBm  
+                    IE: WPA Version 1
+                        Group Cipher : TKIP 
+                        Pairwise Ciphers (1) : TKIP 
+                        Authentication Suites (1) : PSK  
+                    Extra: Last beacon: 206ms ago
+          Cell 09 - Address: 00:14:BF:40:1C:1C
+                    ESSID:"linksys_SES_24341"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:6
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=61/100  Signal level=-64 dBm  
+                    IE: WPA Version 1
+                        Group Cipher : TKIP 
+                        Pairwise Ciphers (1) : TKIP 
+                        Authentication Suites (1) : PSK  
+                    Extra: Last beacon: 303ms ago
+          Cell 10 - Address: 00:16:B6:0C:1C:B8
+                    ESSID:"<hidden>"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:10
+                    Encryption key:off
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=78/100  Signal level=-51 dBm  
+                    Extra: Last beacon: 167ms ago
+          Cell 11 - Address: 00:06:25:F0:D0:BB
+                    ESSID:"<hidden>"
+                    Protocol:IEEE 802.11b
+                    Mode:Master
+                    Channel:11
+                    Encryption key:off
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s
+                    Quality=72/100  Signal level=-56 dBm  
+                    Extra: Last beacon: 166ms ago
+          Cell 12 - Address: 00:11:24:0D:3E:83
+                    ESSID:"Prince Street"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:1
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=29/100  Signal level=-82 dBm  
+                    Extra: Last beacon: 1181ms ago
+          Cell 13 - Address: 00:12:17:05:6D:49
+                    ESSID:"linksys"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:6
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=41/100  Signal level=-76 dBm  
+                    Extra: Last beacon: 300ms ago
+          Cell 14 - Address: 00:09:5B:FE:8C:10
+                    ESSID:"NETGEAR"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:11
+                    Encryption key:off
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=70/100  Signal level=-58 dBm  
+                    Extra: Last beacon: 100ms ago
+          Cell 15 - Address: 00:13:10:03:C4:E6
+                    ESSID:"Petunia"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:2
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=39/100  Signal level=-77 dBm  
+                    IE: WPA Version 1
+                        Group Cipher : TKIP 
+                        Pairwise Ciphers (1) : TKIP 
+                        Authentication Suites (1) : PSK  
+                    Extra: Last beacon: 426ms ago
+          Cell 16 - Address: 00:0F:B5:11:46:AB
+                    ESSID:"monkeyhouse"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:5
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=33/100  Signal level=-80 dBm  
+                    Extra: Last beacon: 342ms ago
+          Cell 17 - Address: 00:14:BF:E9:61:C7
+                    ESSID:"bksny"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:6
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=33/100  Signal level=-80 dBm  
+                    Extra: Last beacon: 1059ms ago
+          Cell 18 - Address: 00:09:5B:DC:E4:A0
+                    ESSID:"Fred"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:11
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=70/100  Signal level=-58 dBm  
+                    IE: WPA Version 1
+                        Group Cipher : TKIP 
+                        Pairwise Ciphers (1) : TKIP 
+                        Authentication Suites (1) : PSK  
+                    Extra: Last beacon: 139ms ago
+          Cell 19 - Address: 00:0D:93:8C:60:B3
+                    ESSID:"mel"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:10
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=37/100  Signal level=-78 dBm  
+                    IE: WPA Version 1
+                        Group Cipher : TKIP 
+                        Pairwise Ciphers (1) : TKIP 
+                        Authentication Suites (1) : PSK  
+                    Extra: Last beacon: 203ms ago
+          Cell 20 - Address: 00:11:24:60:D7:B5
+                    ESSID:"jiffy's world"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:1
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=31/100  Signal level=-81 dBm  
+                    IE: WPA Version 1
+                        Group Cipher : TKIP 
+                        Pairwise Ciphers (1) : TKIP 
+                        Authentication Suites (1) : PSK  
+                    Extra: Last beacon: 1186ms ago
+          Cell 21 - Address: 00:16:B6:66:DE:FB
+                    ESSID:"srgwireless01"
+                    Protocol:IEEE 802.11g
+                    Mode:Master
+                    Channel:7
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=27/100  Signal level=-83 dBm  
+                    Extra: Last beacon: 8447ms ago
+          Cell 22 - Address: 00:09:5B:33:A9:17
+                    ESSID:"H4910M"
+                    Protocol:IEEE 802.11b
+                    Mode:Master
+                    Channel:1
+                    Encryption key:off
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s
+                    Quality=33/100  Signal level=-80 dBm  
+                    Extra: Last beacon: 13761ms ago
+          Cell 23 - Address: 00:20:A6:49:BE:2D
+                    ESSID:"<hidden>"
+                    Protocol:IEEE 802.11b
+                    Mode:Master
+                    Channel:1
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11 Mb/s
+                    Quality=33/100  Signal level=-80 dBm  
+                    Extra: Last beacon: 6358ms ago
+          Cell 24 - Address: 00:14:BF:2B:BB:42
+                    ESSID:"Mom"
+                    Protocol:IEEE 802.11bg
+                    Mode:Master
+                    Channel:6
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=29/100  Signal level=-82 dBm  
+                    Extra: Last beacon: 6234ms ago
+          Cell 25 - Address: 00:0F:66:44:77:4E
+                    ESSID:"svetolaur1"
+                    Protocol:IEEE 802.11g
+                    Mode:Master
+                    Channel:6
+                    Encryption key:on
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 6 Mb/s; 9 Mb/s
+                              11 Mb/s; 12 Mb/s; 18 Mb/s; 24 Mb/s; 36 Mb/s
+                              48 Mb/s; 54 Mb/s
+                    Quality=33/100  Signal level=-80 dBm  
+                    Extra: Last beacon: 3268ms ago
+

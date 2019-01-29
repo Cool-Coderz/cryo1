@@ -1,0 +1,12 @@
+#destroy old VAP
+wlanconfig ath0 destroy
+
+#change MAC of wifi-device
+ifconfig wifi0 down hw ether 00:0B:AD:C0:DE:00
+ifconfig wifi0 up
+
+#create new VAP (with cloned MAC) [outputs dev]
+wlanconfig ath create wlandev wifi0 wlanmode sta
+
+#bring up interface 
+ifconfig ath0 up

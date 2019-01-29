@@ -1,0 +1,198 @@
+#!/bin/bash
+
+####checking for inputs
+if [ $# == 1 ];
+  then
+  PAR1=$1
+else
+  PAR1="-a"
+fi
+
+####variables
+ethCard="eth1"
+ethfile="/var/run/dhcpcd-${ethCard}.pid"
+
+timeout=10
+net=""
+
+echo "Input was ("$PAR1")"
+
+#-----kill previous connection for eth1-----#
+killConn() {
+
+  if [ -f $ethfile ];
+    then
+
+    killEthFile
+
+    if [ -f $ethfile ];
+        then
+        echo "Error killing previous connection."
+    else
+        echo "Previous connection killed."
+    fi
+  else
+    echo "No Previous connection found."
+  fi
+}
+
+killEthFile() {
+  ifconfig $ethCard down
+  kill `cat $ethfile`
+  rm -f $ethfile
+}
+
+funGetAllWifiList() {
+  net=( `iwlist eth1 scanning | grep ESSID | grep -v "'" | sed -e 's/ESSID:"//g;s/"//g'` )
+}
+
+funGetSecure_Wifi_List() {
+  net=( `iwlist eth1 scanning | grep -B4 key:on | grep ESSID | grep -v "'" | sed -e 's/ESSID:"//g;s/"//g;s/<hidden>//g'` )
+}
+
+funGetUnsecure_Wifi_List() {
+  net=( `iwlist eth1 scanning | grep -B4 key:off | grep ESSID | grep -v "'" | sed -e 's/ESSID:"//g;s/"//g;s/<hidden>//g'` )
+}
+
+#1 input = connection detail string, don't include eth1
+funTryConn() {
+  ifconfig $ethCard down
+  ifconfig $ethCard $1
+  dhcpcd $ethCard -t timeout
+}
+
+funScanSecure() {
+  funGetSecure_Wifi_List
+
+  echo "Scanning ${#net[*]} Secure APs"        
+
+  netstatus=0
+  for j in ${net[*]}
+  do
+
+  if [ $netstatus == 0 ]; 
+    then
+    if [ `echo $j | grep sofaking` ]; 
+      then
+      
+  done
+}
+
+
+if [ $PAR1 == "-a" ]; # || $PAR1 == "-[sS]" ];
+  then
+#---------scanning for secure familiar wifi connection-------#
+funGetSecure_Wifi_List #()
+#net=( `iwlist eth1 scanning | grep -B4 key:on | grep ESSID | grep -v "'" | sed -e 's/ESSID:"//g;s/"//g;s/<hidden>//g'` )
+echo "~~~"
+echo "Checking for familiar secure sites.... found("${#net[*]}")"
+
+netstatus=0
+for j in ${net[*]} 
+    do
+    
+    if [ $netstatus = 0 ]; then
+       if [ `echo $j | grep sofaking` ]; then    
+    	  echo "--Found and trying MC-"$j
+    	  ifconfig eth1 up
+    	  iwconfig eth1 essid sofaking channel 10 key 86638796162122140561333170
+	  dhcpcd eth1 -t timeout
+	  if [ $ethfile -f ]; then
+	     echo "MC connected... "
+	     echo $j"::Connected:Secure" >> getwifi_log
+	     $netstatus=1
+	  else
+	     echo "MC failed!"
+	     echo $j"::Failed:Secure" >> getwifi_log
+	  fi
+       else
+          echo "--Found "$j" - not familiar"
+	  echo $j"::Unknown:Secure" >> getwifi_log
+       fi
+    else
+       echo $j"::Failed:Secure" >> getwifi_log
+    fi
+done
+if [ $netstatus = 1 ]; then 
+    exit 1 
+fi
+
+fi
+#----end of secure connects---------
+
+
+
+
+
+if [ $PAR1 == "-a" ]; #|| $PAR1 == "-[uU]" ];
+  then
+#---------scanning for unsecure wifi CNs------------------#
+
+
+ethBreakDown() {
+    scan=( `iwlist eth1 scanning | grep -B5 key:off` )
+    echo "{"${#scan[*]}"}"
+    
+    cnt[0]=""
+    t=0
+    h=0
+    for q in ${scan[*]}
+      do
+      echo $q
+      cnt[$h]=${cnt[$h]}$q" "
+    #echo ${cnt[$h]}
+      
+    #if [ `echo $q | grep ago` ];
+    #	then	   	
+    #echo "cnt("$h"):"${cnt[$h]}
+    #	let "h += 1"
+    #fi
+
+      if [ $t == 30 ];
+          then
+    #    echo "end: "${cnt[$h]}
+          exit 1
+      fi
+      let "t += 1"
+    done
+    exit 1
+}
+
+
+net=( `$scan | grep -B4 key:off | grep ESSID | sed -e 's/ESSID:"//g;s/"//g;s/<hidden>//g'` )
+#mac=( `$scan | grep -B4 key:off | grep Address | sed -e 's/Address://g'` )
+
+
+
+net=( `iwlist eth1 scanning | grep -B4 key:off | grep ESSID | sed -e 's/ESSID:"//g;s/"//g;s/<hidden>//g'` )
+
+
+echo "~~~"
+echo "Checking for u.s.... found("${#net[*]}")" 
+if [ ${#net[*]} -gt 1  ] 
+    then 
+    for i in ${net[*]} 
+      do 
+      echo ""
+      echo "_______________________"
+      echo "+Checking device: ("$i") ..."
+      echo " --setting iwconfig..."
+      iwconfig eth1 essid $i
+      echo " --trying connection to "$i
+   
+      dhcpcd eth1 -t $timeout
+      myip=`route -n | grep eth1 | grep -v UG | awk '{print $1}'`
+      if [ ${#myip} -gt 5  ]; then	
+          echo " --+---Connected!!  :p"
+          newip=`ifconfig eth1 | grep Bcast | awk '{print $2}' | sed -e 's/addr://g'`
+          echo " --+---your IP is "$newip
+	  echo $i":"$newip":Connected:!secure" >> getwifi_log
+          exit 1
+      fi
+      echo " --Connection Failed. :(  Searching for more.."
+      echo $i":"":Failed:!secure" >> getwifi_log
+    done
+fi
+fi
+echo "No connections successful, please try again."
+exit 0

