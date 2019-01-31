@@ -39,6 +39,96 @@ if all goes well you can move down to the next section.
 If you can get to this point, you are doing great! and at a really happy place.  this means that we can push new docker files and you can run it right away and test new changes to the build.
 
 
+## Docker images added for Django (will remove previous mod_image first):
+
+Note: keep in mind Docker is similar to git, where you are building something big out of smaller linear pieces.
+
+Moving forward :)
+In the previous section, we had two dockerfiles that I had you build... and then you ran the last one.  We no longer want to use the second one.
+We should remember that when we built and ran it... we used the following scripts in order "rebuild_image.sh" and "run_container.sh"... in order to remove this image we must reverse the process.  So, now we want to look for the container first and then the image.
+
+since we want the container first, We can gain perspective by looking at the script we ran last: "run_container.sh" and look up the container name we ran it under.
+if you found the container name == 'cc_mod', then you are on the right track.
+
+use: "$ docker ps -a" to find any containers that exist.  you should see something like this:
+$ docker ps -a
+CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                    NAMES
+606288b36bfc        cent76_conda3_mod_run              "/opt/scripts/entryp…"   5 minutes ago       Up 4 minutes        0.0.0.0:8000->8000/tcp   cc_mod
+
+# FIND AND STOP CONTAINER
+we can see 'cc_mod' at the very end.  If you look under "STATUS" you will see either something starting with "Up # minutes" or "Exiting.."
+if you see something like "Exiting...", then it means the container has already been stopped and you just need to remove it.
+However if you see "Up #...." then we need to first stop it by container_id.  We can do that by using the following command (this may take 5 or more seconds):
+$ docker stop 606288b36bfc
+
+# REMOVE CONTAINER
+The container we working with should be stopped by this time and show a status of "Exiting..." at this point.  Now we need to remove it, because it is a hanging thread to the image and we can't remove/rebuild the image from it until that is done.  so now use the following command (this should be faster than then stopping it):
+$ docker rm 606288b36bfc
+
+if you do a $ docker ps -a now, you should see the container gone.
+
+# REMOVE IMAGE
+Now we can remove the image we have been after.  Now to track down the image we are looking for, we look into "rebuild_image.sh" and we should see "cent76_conda3_mod_run".
+using that image name we can do the following command (we should see that same image name to the left):
+$ docker image ls
+REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
+cent76_conda3_mod_run              latest              ac83e09d2f88        17 minutes ago      4.59GB
+
+We can now use the image id to remove the image.  Use the following to remove it:
+$ docker rmi ac83e09d2f88
+
+
+## Working with the two new Django Docker images:
+
+At this point, you should have done a "git pull origin master" or re-downloaded the repo.  To make sure we are in sync, if you do a tree on the images folder you should get this:
+=============================================================================
+$ tree
+.
+├── base_image
+│   ├── Dockerfile
+│   ├── download_files.sh
+│   └── rebuild_image.sh
+├── django_image
+│   ├── Dockerfile
+│   └── rebuild_image.sh
+├── django_mod_image
+│   ├── Dockerfile
+│   ├── interactive_run_container.sh
+│   ├── rebuild_image.sh
+│   ├── run_container.sh
+│   └── scripts
+│       ├── entrypoint.sh
+│       ├── run_django_project.sh
+│       └── show_django.sh
+└── mod_image
+    ├── Dockerfile
+    ├── interactive_run_container.sh
+    ├── rebuild_image.sh
+    ├── run_container.sh
+    └── scripts
+        └── entrypoint.sh
+
+6 directories, 17 files
+=============================================================================
+
+The two folders I just added are "django_image" and "django_mod_image".
+
+To get up and running quick:
+1) cd into django_image
+   - ./rebuild_image.sh
+2) cd into django_mod_image
+   - ./rebuild_image.sh
+   - ./run_container.sh
+   - ./interactive_run_container.sh
+     This will get you to a shell prompt within the running container,
+     and you should be in /opt/scripts
+   - ./run_django_project.sh
+   - navigate to the IP for the VM host that is running this docker iamges, like so:  http://127.0.0.1:8000
+     You should see the default webpage for a fresh django install.
+
+More on the way and poke around at the scripts, you get familiar with them.
+
+
 ## Docker terminology and descriptions:
 
 Descriptions:
