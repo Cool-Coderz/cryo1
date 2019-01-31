@@ -1,15 +1,12 @@
-FROM cent76_conda3
-
-ENV PORT 8000
+FROM cent76_conda3_django194
 
 COPY scripts /opt/scripts
 
 RUN chmod +x /opt/scripts/*.sh \
-    && echo "export PORT=8000" >> ~/.bashrc
+    && mkdir -p /opt/django
 
 EXPOSE 8000
 
 WORKDIR /opt/scripts
 
 ENTRYPOINT ["/opt/scripts/entrypoint.sh"]
-

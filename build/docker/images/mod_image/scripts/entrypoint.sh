@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PORT=8080
+export PORT=8000
 
 echo 'exiting...'
 

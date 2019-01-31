@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# run container
-
-IMAGE_NAME="cent76_conda3_mod_run"
-CONTAINER_NAME="cc_mod"
+IMAGE_NAME="cent76_conda3_django194"
+CONTAINER_NAME="django194"
 
 # remove previous containers first
 echo "docker ps -a | grep $CONTAINER_NAME"
@@ -24,10 +22,5 @@ then
     fi
 fi
 
-# run new container from iamge
-echo "docker run -d -p 8000:8000 --name ${CONTAINER_NAME} ${IMAGE_NAME}"
-echo "docker exec -it ${CONTAINER_NAME} /bin/bash"
-docker run -d -p 8000:8000 --name $CONTAINER_NAME $IMAGE_NAME
 
-docker top $CONTAINER_NAME
-docker logs $CONTAINER_NAME
+docker build --tag $IMAGE_NAME .

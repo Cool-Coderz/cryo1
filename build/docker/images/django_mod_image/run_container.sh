@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # run container
-
-IMAGE_NAME="cent76_conda3_mod_run"
-CONTAINER_NAME="cc_mod"
+IMAGE_NAME="cent76_conda3_django194_mod"
+CONTAINER_NAME="django194_mod"
 
 # remove previous containers first
 echo "docker ps -a | grep $CONTAINER_NAME"
